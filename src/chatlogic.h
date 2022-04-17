@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 #include "chatgui.h"
-
+#include "chatbot.h"
 // forward declarations
 class ChatBot;
 class GraphEdge;
@@ -14,10 +14,11 @@ class ChatLogic
 {
 private:
     //// STUDENT CODE
-    ////
+    ////Task 3 : Exclusive Ownership 2
 
     // data handles (owned)
-    std::vector<GraphNode *> _nodes;
+    //std::vector<GraphNode *> _nodes;
+    std::vector<std::unique_ptr<GraphNode>> _nodes;
     std::vector<GraphEdge *> _edges;
 
     ////
@@ -25,7 +26,7 @@ private:
 
     // data handles (not owned)
     GraphNode *_currentNode;
-    ChatBot *_chatBot;
+    ChatBot* _chatBot;
     ChatBotPanelDialog *_panelDialog;
 
     // proprietary type definitions
@@ -42,7 +43,7 @@ public:
 
     // getter / setter
     void SetPanelDialogHandle(ChatBotPanelDialog *panelDialog);
-    void SetChatbotHandle(ChatBot *chatbot);
+    void SetChatbotHandle(ChatBot* chatbot);
 
     // proprietary functions
     void LoadAnswerGraphFromFile(std::string filename);
